@@ -1,3 +1,7 @@
+# Demonaz
+
+### Config Example
+```
 {
   "daemons": [
     {
@@ -14,3 +18,4 @@
     }
   ]
 }
+```
