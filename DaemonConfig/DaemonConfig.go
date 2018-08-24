@@ -9,6 +9,7 @@ type Daemon struct {
 	Name        string `json:"name"`
 	Cmd         string `json:"cmd"`
 	Enable      bool   `json:enable`
+	LogFile     string `json:"log_file"`
 	WorkerCount int    `json:"worker_count"`
 }
 
@@ -29,6 +30,7 @@ func GetConfig(configPath string) Config {
 			panic("Can't parse config json")
 		}
 		configData = config
+
 		configData.ready = true
 	}
 	return configData

@@ -2,6 +2,7 @@ package Starter
 
 import (
 	"../DaemonConfig"
+	"../Logger"
 	"log"
 	"os/exec"
 	"strings"
@@ -13,9 +14,13 @@ func Operate(daemon DaemonConfig.Daemon) {
 		panic("Can't parse exec command")
 	}
 
+	Logger.WriteToLog(daemon.LogFile, "start: "+daemon.Cmd)
+
 	cmd := exec.Command(commandParts[0], commandParts[1:]...)
-	_, err := cmd.CombinedOutput()
-	if err != nil {
-		log.Fatalf("cmd.Run() failed with %s\n", err)
+	output, err2 := cmd.CombinedOutput()
+	if err2 != nil {
+		log.Fatalf("cmd.Run() failed with %s\n", err2)
 	}
+
+	Logger.WriteToLog(daemon.LogFile, "result: "+string(output))
 }
