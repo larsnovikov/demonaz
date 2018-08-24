@@ -1,15 +1,8 @@
 package DaemonConfig
 
 import (
-	//	"crypto/md5"
-	//	"encoding/hex"
 	"encoding/json"
 	"io/ioutil"
-)
-
-const (
-	configPath = "config/config.json"
-)
 
 type Daemon struct {
 	Name        string `json:"name"`
@@ -24,52 +17,26 @@ type Config struct {
 }
 
 var configData Config
-
 var configHash string
 
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
-func GetConfig() Config {
+func GetConfig(configPath string) Config {
 	if configData.ready == false {
 		config := Config{}
-
-		text := ReadConfig()
-		json.Unmarshal(text, &config)
-
+		text := ReadConfig(configPath)
+		err := json.Unmarshal(text, &config)
+		if err != nil {
+			panic("Can't parse config json")
+		}
 		configData = config
 		configData.ready = true
 	}
 	return configData
 }
 
-func ReadConfig() []byte {
+func ReadConfig(configPath string) []byte {
 	dat, err := ioutil.ReadFile(configPath)
-	check(err)
+	if err != nil {
+		panic("Can't read config file")
+	}
 	return dat
 }
-
-// func CheckConfigChanges(){
-// 	currentConfig = ReadConfig();
-//     currentConfigHash = MakeConfigHash(currentConfig)
-
-//     if (currentConfigHash)
-// }
-
-// func GetConfigHash() string {
-// 	return configHash
-// }
-
-// func SetConfigHash(hash string) {
-// 	configHash = hash
-// }
-
-// func MakeConfigHash(text string) string {
-// 	hasher := md5.New()
-// 	hasher.Write([]byte(text))
-
-// 	return hex.EncodeToString(hasher.Sum(nil))
-// }

@@ -1,6 +1,9 @@
 # Demonaz
 
+Simple Golang daemon starter
+
 ### Config Example
+Create `config.json` like this:
 ```
 {
   "daemons": [
@@ -19,3 +22,6 @@
   ]
 }
 ```
+
+### Start in dev mode
+`go run config.json`

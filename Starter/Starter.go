@@ -2,7 +2,6 @@ package Starter
 
 import (
 	"../DaemonConfig"
-	"fmt"
 	"log"
 	"os/exec"
 	"strings"
@@ -11,7 +10,7 @@ import (
 func Operate(daemon DaemonConfig.Daemon) {
 	commandParts := strings.Fields(daemon.Cmd)
 	if len(commandParts) < 2 {
-		fmt.Println("shit happens")
+		panic("Can't parse exec command")
 	}
 
 	cmd := exec.Command(commandParts[0], commandParts[1:]...)
@@ -19,5 +18,4 @@ func Operate(daemon DaemonConfig.Daemon) {
 	if err != nil {
 		log.Fatalf("cmd.Run() failed with %s\n", err)
 	}
-	// fmt.Printf(string(out))
 }
