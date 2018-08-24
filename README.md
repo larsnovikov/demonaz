@@ -1,4 +1,8 @@
-# Demonaz
+<p align="center">
+    <img src="https://www.metal-archives.com/images/2/8/7/287_artist.jpg?4821" height="100px">
+    <h1 align="center">Demonaz</h1>
+    <br>
+</p>
 
 Simple Golang daemon starter
 
