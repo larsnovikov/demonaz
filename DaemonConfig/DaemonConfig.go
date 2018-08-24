@@ -3,6 +3,7 @@ package DaemonConfig
 import (
 	"encoding/json"
 	"io/ioutil"
+)
 
 type Daemon struct {
 	Name        string `json:"name"`
