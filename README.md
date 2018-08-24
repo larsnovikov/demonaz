@@ -25,3 +25,5 @@ Create `config.json` like this:
 
 ### Start in dev mode
 `go run config.json`
+### Start in prod mode
+`./demonaz config.json`
