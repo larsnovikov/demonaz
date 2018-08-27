@@ -6,6 +6,7 @@ Simple Golang daemon starter
 Create `config.json` like this:
 ```
 {
+  "check_config_changes": false,
   "daemons": [
     {
       "name": "test",
@@ -29,3 +30,5 @@ Create `config.json` like this:
 `go run config.json`
 ### Start in prod mode
 `./demonaz config.json`
+### Some tips
+If you want change config without manual restart, set `check_config_changes=true` in config and add demonaz to crontab(every minute) 
