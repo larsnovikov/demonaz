@@ -35,9 +35,7 @@ func main() {
 		if config.Daemons[i].Enable == true {
 			for j := 1; j <= config.Daemons[i].WorkerCount; j++ {
 				wg.Add(1)
-				fmt.Println("start")
 				time.Sleep(time.Duration(config.Daemons[i].StartDelay) * time.Second)
-				fmt.Println("end")
 				go startRoutine(&wg, config.Daemons[i])
 			}
 		}
