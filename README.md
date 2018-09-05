@@ -13,7 +13,7 @@ Create `config.json` like this:
       "cmd": "php test.php",
       "enable": true,
       "worker_count": 2,
-      "log_file": "test2.log",
+      "log_file": "test.log",
     },
     {
       "name": "test2",
@@ -27,7 +27,7 @@ Create `config.json` like this:
 ```
 
 ### Start in dev mode
-`go run config.json`
+`go run demonaz.go config.json`
 ### Start in prod mode
 `./demonaz config.json`
 ### Some tips
