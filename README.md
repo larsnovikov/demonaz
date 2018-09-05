@@ -14,6 +14,7 @@ Create `config.json` like this:
       "enable": true,
       "worker_count": 2,
       "log_file": "test2.log",
+      "start_delay": 5
     },
     {
       "name": "test2",
@@ -21,6 +22,7 @@ Create `config.json` like this:
       "enable": true,
       "worker_count": 5,
       "log_file": "test2.log",
+      "start_delay": 5
     }
   ]
 }

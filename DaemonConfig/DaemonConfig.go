@@ -13,6 +13,7 @@ type Daemon struct {
 	Enable      bool   `json:enable`
 	LogFile     string `json:"log_file"`
 	WorkerCount int    `json:"worker_count"`
+	StartDelay  int    `json:"start_delay"`
 }
 
 type Config struct {

@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"sync"
+	"time"
 )
 
 var checkConfigChanges bool
@@ -46,6 +47,7 @@ func main() {
 
 func startRoutine(wg *sync.WaitGroup, daemon DaemonConfig.Daemon) {
 	defer wg.Done()
+	time.Sleep(time.Duration(daemon.StartDelay) * time.Second)
 	for {
 		if checkConfigChanges && DaemonConfig.IsConfigChanged() {
 			fmt.Println("Config changed! Stop goroutines")
