@@ -35,6 +35,9 @@ func main() {
 		if config.Daemons[i].Enable == true {
 			for j := 1; j <= config.Daemons[i].WorkerCount; j++ {
 				wg.Add(1)
+				fmt.Println("start")
+				time.Sleep(time.Duration(config.Daemons[i].StartDelay) * time.Second)
+				fmt.Println("end")
 				go startRoutine(&wg, config.Daemons[i])
 			}
 		}
@@ -47,7 +50,6 @@ func main() {
 
 func startRoutine(wg *sync.WaitGroup, daemon DaemonConfig.Daemon) {
 	defer wg.Done()
-	time.Sleep(time.Duration(daemon.StartDelay) * time.Second)
 	for {
 		if checkConfigChanges && DaemonConfig.IsConfigChanged() {
 			fmt.Println("Config changed! Stop goroutines")
