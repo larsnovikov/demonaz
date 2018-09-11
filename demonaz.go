@@ -1,8 +1,8 @@
 package main
 
 import (
-	"./DaemonConfig"
-	"./Starter"
+	"./daemon_config"
+	"./starter"
 	"fmt"
 	"github.com/marcsauter/single"
 	"log"
