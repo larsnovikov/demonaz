@@ -4,8 +4,8 @@ import (
 	"./DaemonConfig"
 	"./Starter"
 	"fmt"
-	"github.com/marcsauter/single"
-	"log"
+	//"github.com/marcsauter/single"
+	//"log"
 	"os"
 	"sync"
 	"time"
@@ -14,13 +14,13 @@ import (
 var checkConfigChanges bool
 
 func main() {
-	s := single.New("demonaz")
-	if err := s.CheckLock(); err != nil && err == single.ErrAlreadyRunning {
-		log.Fatal("another instance of the app is already running, exiting")
-	} else if err != nil {
-		log.Fatalf("failed to acquire exclusive app lock: %v", err)
-	}
-	defer s.TryUnlock()
+	// s := single.New("demonaz")
+	// if err := s.CheckLock(); err != nil && err == single.ErrAlreadyRunning {
+	// 	log.Fatal("another instance of the app is already running, exiting")
+	// } else if err != nil {
+	// 	log.Fatalf("failed to acquire exclusive app lock: %v", err)
+	// }
+	// defer s.TryUnlock()
 
 	args := os.Args[1:]
 	if len(args) == 0 {
